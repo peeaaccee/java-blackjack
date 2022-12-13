@@ -25,7 +25,7 @@ public class Dealer {
     public Map<Result, Long> aggregateResultStatistics(List<Player> players) {
         Map<Result, Long> resultStatistics = players.stream()
                 .map(player -> player.judgeResult(this))
-                .collect(Collectors.groupingBy(this::replaceWinWithLose, () -> new EnumMap<>(Result.class)), Collectors.counting()));
+                .collect(Collectors.groupingBy(this::replaceWinWithLose, () -> new EnumMap<>(Result.class)), Collectors.counting());
         initializeWhenKeyIsEmpty(resultStatistics);
         return resultStatistics;
     }
